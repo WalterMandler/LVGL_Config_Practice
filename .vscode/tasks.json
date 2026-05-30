@@ -1,0 +1,65 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "PlatformIO",
+			"task": "Upload",
+			"problemMatcher": [
+				"$platformio"
+			],
+			"label": "PlatformIO: Upload",
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated",
+				"clear": false,
+				"close": true,
+			},
+		},
+		{
+			"label": "Kill, Then Build",
+			"detail": "Kill the simulator if it is open. Build using CMake.",
+			"type": "shell",
+			"command": "Stop-Process -Name main -Force -ErrorAction SilentlyContinue ; cmake --build build --parallel",
+			"options": {
+				"cwd": "${workspaceFolder}",
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false,
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared",
+				"clear": false,
+				"close": false,
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+		},
+		{
+			"label": "Run",
+			"detail": "Kill the simulator if it is open. Build using CMake. Run the executable.",
+			"type": "shell",
+			"command": "./bin/main.exe",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"runOptions": {
+				"instanceLimit": 1,
+				"instancePolicy": "terminateOldest",
+			},
+			"dependsOn": "Kill, Then Build",
+			"group": {
+				"kind": "build",
+				"isDefault": true,
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared",
+				"clear": false,
+				"close": true,
+			},
+		},
+	]
+}
