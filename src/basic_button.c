@@ -11,7 +11,7 @@ static void basic_button_cb(lv_event_t* event) {
 void basic_button() {
 	lv_obj_t* button = lv_button_create(lv_screen_active());
 	lv_obj_remove_style_all(button);
-	lv_obj_set_style_bg_color(button, lv_color_hex(0x00FF00), LV_PART_MAIN | LV_STATE_DEFAULT);
+	lv_obj_set_style_bg_color(button, lv_color_hex(0xFF0000), LV_PART_MAIN | LV_STATE_DEFAULT);
 	lv_obj_set_style_bg_opa(button, LV_OPA_100, LV_PART_MAIN | LV_STATE_DEFAULT);
 	lv_obj_set_pos(button, 100, 100);
 	lv_obj_set_size(button, 150, 50);

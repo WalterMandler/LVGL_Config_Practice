@@ -68,7 +68,7 @@
 
 #if LV_USE_STDLIB_MALLOC == LV_STDLIB_BUILTIN
     /** Size of memory available for `lv_malloc()` in bytes (>= 2kB) */
-    #define LV_MEM_SIZE (1024 * 1024)
+    #define LV_MEM_SIZE (64 * 1024)
 
     /** Size of the memory expand for `lv_malloc()` in bytes */
     #define LV_MEM_POOL_EXPAND_SIZE 0
@@ -456,7 +456,7 @@
  *-----------*/
 
 /** Enable log module */
-#define LV_USE_LOG 1
+#define LV_USE_LOG 0
 #if LV_USE_LOG
     /** Set value to one of the following levels of logging detail:
      *  - LV_LOG_LEVEL_TRACE    Log detailed information.
@@ -504,9 +504,9 @@
  * If LV_USE_LOG is enabled, an error message will be printed on failure. */
 #define LV_USE_ASSERT_NULL          1   /**< Check if the parameter is NULL. (Very fast, recommended) */
 #define LV_USE_ASSERT_MALLOC        1   /**< Checks is the memory is successfully allocated or no. (Very fast, recommended) */
-#define LV_USE_ASSERT_STYLE         1
-#define LV_USE_ASSERT_MEM_INTEGRITY 1
-#define LV_USE_ASSERT_OBJ           1
+#define LV_USE_ASSERT_STYLE         0
+#define LV_USE_ASSERT_MEM_INTEGRITY 0
+#define LV_USE_ASSERT_OBJ           0
 
 /** Add a custom handler when assert happens e.g. to restart MCU. */
 #define LV_ASSERT_HANDLER_INCLUDE <stdint.h>
@@ -710,7 +710,7 @@
 #define LV_FONT_CUSTOM_DECLARE
 
 /** Always set a default font */
-#define LV_FONT_DEFAULT &lv_font_montserrat_12
+#define LV_FONT_DEFAULT &lv_font_montserrat_14
 
 /** Enable handling large font and/or fonts with a lot of characters.
  *  The limit depends on the font size, font face and bpp.
@@ -886,7 +886,7 @@
 #define LV_USE_THEME_DEFAULT 1
 #if LV_USE_THEME_DEFAULT
     /** 0: Light mode; 1: Dark mode */
-    #define LV_THEME_DEFAULT_DARK 0
+    #define LV_THEME_DEFAULT_DARK 1
 
     /** 1: Enable grow on press */
     #define LV_THEME_DEFAULT_GROW 1
@@ -925,7 +925,7 @@
 #define LV_FS_DEFAULT_DRIVER_LETTER '\0'
 
 /** API for fopen, fread, etc. */
-#define LV_USE_FS_STDIO 1
+#define LV_USE_FS_STDIO 0
 #if LV_USE_FS_STDIO
     #define LV_FS_STDIO_LETTER 'A'
     #define LV_FS_STDIO_PATH ""         /**< Set the working directory. File/directory paths will be appended to it. */
@@ -1025,16 +1025,16 @@
 #define LV_USE_GSTREAMER 0
 
 /** Decode bin images to RAM */
-#define LV_BIN_DECODER_RAM_LOAD 1
+#define LV_BIN_DECODER_RAM_LOAD 0
 
 /** RLE decompress library */
-#define LV_USE_RLE 1
+#define LV_USE_RLE 0
 
 /** QR code library */
-#define LV_USE_QRCODE 1
+#define LV_USE_QRCODE 0
 
 /** Barcode code library */
-#define LV_USE_BARCODE 1
+#define LV_USE_BARCODE 0
 
 /** FreeType library */
 #define LV_USE_FREETYPE 0
@@ -1055,7 +1055,7 @@
 #endif
 
 /** Built-in TTF decoder */
-#define LV_USE_TINY_TTF 1
+#define LV_USE_TINY_TTF 0
 #if LV_USE_TINY_TTF
     /* Enable loading TTF data from files */
     #define LV_TINY_TTF_FILE_SUPPORT 0
@@ -1087,7 +1087,7 @@
 #define LV_USE_NANOVG 0
 
 /** Use lvgl built-in LZ4 lib */
-#define LV_USE_LZ4_INTERNAL  1
+#define LV_USE_LZ4_INTERNAL  0
 
 /** Use external LZ4 library */
 #define LV_USE_LZ4_EXTERNAL  0
@@ -1119,10 +1119,10 @@
 #define LV_USE_SNAPSHOT 0
 
 /** 1: Enable system monitor component */
-#define LV_USE_SYSMON   1
+#define LV_USE_SYSMON   0
 #if LV_USE_SYSMON
     /** Get the idle percentage. E.g. uint32_t my_get_idle(void); */
-    #define LV_SYSMON_GET_IDLE lv_os_get_idle_percent
+    #define LV_SYSMON_GET_IDLE lv_timer_get_idle
     /** 1: Enable usage of lv_os_get_proc_idle_percent.*/
     #define LV_SYSMON_PROC_IDLE_AVAILABLE 0
     #if LV_SYSMON_PROC_IDLE_AVAILABLE
@@ -1135,7 +1135,7 @@
      *  - Requires `LV_USE_SYSMON = 1` */
     #define LV_USE_PERF_MONITOR 0
     #if LV_USE_PERF_MONITOR
-        #define LV_USE_PERF_MONITOR_POS LV_ALIGN_BOTTOM_RIGHT
+        #define LV_USE_PERF_MONITOR_POS LV_TOP_RIGHT
 
         /** 0: Displays performance data on the screen; 1: Prints performance data using log. */
         #define LV_USE_PERF_MONITOR_LOG_MODE 0
@@ -1146,7 +1146,7 @@
      *     - Requires `LV_USE_SYSMON = 1`*/
     #define LV_USE_MEM_MONITOR 0
     #if LV_USE_MEM_MONITOR
-        #define LV_USE_MEM_MONITOR_POS LV_ALIGN_BOTTOM_LEFT
+        #define LV_USE_MEM_MONITOR_POS LV_ALIGN_BOTTOM_RIGHT
     #endif
 #endif /*LV_USE_SYSMON*/
 
@@ -1221,7 +1221,7 @@
 #define LV_USE_FRAGMENT 0
 
 /** 1: Support using images as font in label or span widgets */
-#define LV_USE_IMGFONT 1
+#define LV_USE_IMGFONT 0
 
 /** 1: Enable an observer pattern implementation */
 #define LV_USE_OBSERVER 1
@@ -1290,7 +1290,7 @@
  *==================*/
 
 /** Use SDL to open window on PC and handle mouse and keyboard. */
-#define LV_USE_SDL              1
+#define LV_USE_SDL              0
 #if LV_USE_SDL
     #define LV_SDL_INCLUDE_PATH     <SDL2/SDL.h>
     #define LV_SDL_RENDER_MODE      LV_DISPLAY_RENDER_MODE_DIRECT   /**< LV_DISPLAY_RENDER_MODE_DIRECT is recommended for best performance */

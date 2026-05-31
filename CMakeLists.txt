@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 99)
 # Set the locations of the LVGL library and the configuration file.
 set(MY_LIBRARIES_DIR "C:/MyCode/ExternalLibraries")
 set(MY_LVGL_DIR "${MY_LIBRARIES_DIR}/lvgl")
-set(LV_BUILD_CONF_PATH "${PROJECT_SOURCE_DIR}/lv_conf.h")
+set(LV_BUILD_CONF_PATH "${PROJECT_SOURCE_DIR}/lv_conf_simulator.h")
 
 # Required source files.
 file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.c")
